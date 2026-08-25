@@ -4,10 +4,10 @@ Enterprise-grade Playwright + TypeScript automation framework for the Polymer Sh
 
 ![Framework Banner](assets/banner.svg)
 
-[![Playwright CI](https://github.com/PawankumarKharpude27/Polymer-Shop_Playwright_Pawankumar/actions/workflows/playwright.yml/badge.svg)](https://github.com/PawankumarKharpude27/Polymer-Shop_Playwright_Pawankumar/actions/workflows/playwright.yml)
-[![Security Checks](https://github.com/PawankumarKharpude27/Polymer-Shop_Playwright_Pawankumar/actions/workflows/security.yml/badge.svg)](https://github.com/PawankumarKharpude27/Polymer-Shop_Playwright_Pawankumar/actions/workflows/security.yml)
+[![Playwright CI](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/playwright.yml/badge.svg)](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/playwright.yml)
+[![Security Checks](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/security.yml/badge.svg)](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/security.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Last Commit](https://img.shields.io/github/last-commit/PawankumarKharpude27/Polymer-Shop_Playwright_Pawankumar)
+![Last Commit](https://img.shields.io/github/last-commit/RutujaRaikar/Polymer-Shop_Playwright_Rutuja)
 
 ## Why this framework exists
 
@@ -24,7 +24,7 @@ This repository is structured to feel like a production-ready engineering asset 
 
 ## Ownership and branding
 
-Maintainer: Pawankumar S. Kharpude
+Maintainer: Rutuja Raikar
 
 This framework is designed to be professionally presented in GitHub, interviews, and enterprise-style technical reviews. For branding and protection:
 - use the MIT license for code reuse

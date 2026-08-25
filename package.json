@@ -24,7 +24,7 @@
     "sdet",
     "portfolio"
   ],
-  "author": "Shree",
+  "author": "Rutuja Raikar",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
