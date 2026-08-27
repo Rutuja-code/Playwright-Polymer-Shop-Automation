@@ -4,12 +4,7 @@ export class WaitUtils {
   constructor(private readonly page: Page) {}
 
   async waitForStableDom() {
-    await this.page.waitForLoadState('networkidle');
-    await this.page.waitForTimeout(2000);
-  }
-
-  async pauseForObservation(durationMs: number = 2000) {
-    await this.page.waitForTimeout(durationMs);
+    await this.page.waitForLoadState('domcontentloaded');
   }
 
   async waitForVisible(locator: Locator) {

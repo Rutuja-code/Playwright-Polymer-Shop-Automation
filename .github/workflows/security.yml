@@ -23,12 +23,9 @@ jobs:
         run: npm ci
 
       - name: Run dependency audit
-        run: npm audit --omit=dev
+        run: npm audit --audit-level=high
 
       - name: Run secret scan
-        run: |
-          if command -v gitleaks >/dev/null 2>&1; then
-            gitleaks detect --source . --no-git --redact
-          else
-            echo "gitleaks not installed; skipping secret scan"
-          fi
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,8 +6,11 @@ test.describe('Regression suite', () => {
     homePage,
     headerComponent,
     footerComponent,
-  }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== 'mobile-chromium',
+      'Responsive coverage runs on the mobile project only.'
+    );
     await homePage.open();
     await homePage.verifyLoaded();
     await headerComponent.verifyVisible();
@@ -15,8 +18,6 @@ test.describe('Regression suite', () => {
 
     await expect(page.locator('body')).toBeVisible();
     await expect(page.locator('shop-app')).toBeVisible();
-    await expect(page.locator('shop-app').locator('shop-home'))
-      .toBeVisible()
-      .catch(() => undefined);
+    await expect(page.locator('shop-app').locator('shop-home')).toBeVisible();
   });
 });

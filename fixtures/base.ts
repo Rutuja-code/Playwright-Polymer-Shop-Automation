@@ -18,16 +18,6 @@ export type AppFixtures = {
 };
 
 export const test = base.extend<AppFixtures>({
-  page: async ({ page }, use) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.evaluate(() => {
-      window.moveTo(0, 0);
-      if (window.screen?.availWidth) {
-        window.resizeTo(window.screen.availWidth, window.screen.availHeight);
-      }
-    });
-    await use(page);
-  },
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
   },

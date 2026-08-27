@@ -1,13 +1,5 @@
-import path from 'path';
-import dotenv from 'dotenv';
 import { defineConfig, devices } from '@playwright/test';
-
-const envName = process.env.ENV_NAME ?? 'dev';
-const envFile = path.resolve(__dirname, 'env', `.env.${envName}`);
-
-dotenv.config({ path: envFile });
-
-const baseURL = process.env.BASE_URL ?? 'https://shop.polymer-project.org';
+import { environment } from './config/environment';
 const isCI = !!process.env.CI;
 
 export default defineConfig({
@@ -27,7 +19,7 @@ export default defineConfig({
   ],
   outputDir: 'reports/test-results',
   use: {
-    baseURL,
+    baseURL: environment.baseUrl,
     headless: true,
     viewport: { width: 1440, height: 1200 },
     ignoreHTTPSErrors: true,
@@ -50,6 +42,7 @@ export default defineConfig({
     },
     {
       name: 'mobile-chromium',
+      testMatch: '**/tests/regression/responsive.spec.ts',
       use: { ...devices['Pixel 5'] },
     },
   ],

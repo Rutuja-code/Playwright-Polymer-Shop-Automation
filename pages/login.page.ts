@@ -1,13 +1,15 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
+import { ROUTES } from '../constants/routes';
+import { SELECTORS } from '../constants/selectors';
 
 export class LoginPage extends BasePage {
   // Selectors for login page
-  private usernameInput = 'input#username';
-  private passwordInput = 'input#password';
-  private loginButton = 'button#submit';
-  private successMessage = 'div.post-title';
-  private errorMessage = 'div#error';
+  readonly usernameInput = this.page.locator(SELECTORS.loginUsername);
+  readonly passwordInput = this.page.locator(SELECTORS.loginPassword);
+  readonly loginButton = this.page.locator(SELECTORS.loginButton);
+  readonly successMessage = this.page.locator(SELECTORS.loginSuccessMessage);
+  readonly errorMessage = this.page.locator(SELECTORS.loginErrorMessage);
 
   constructor(page: Page) {
     super(page);
@@ -17,8 +19,7 @@ export class LoginPage extends BasePage {
    * Navigate to the login page
    */
   async navigateToLoginPage() {
-    await this.open('');
-    await this.page.goto('https://practicetestautomation.com/practice-test-login/');
+    await this.open(ROUTES.login);
     await this.verifyLoaded();
   }
 
@@ -26,22 +27,21 @@ export class LoginPage extends BasePage {
    * Enter username in the username field
    */
   async enterUsername(username: string) {
-    await this.page.fill(this.usernameInput, username);
+    await this.usernameInput.fill(username);
   }
 
   /**
    * Enter password in the password field
    */
   async enterPassword(password: string) {
-    await this.page.fill(this.passwordInput, password);
+    await this.passwordInput.fill(password);
   }
 
   /**
    * Click the login button
    */
   async clickLoginButton() {
-    await this.page.click(this.loginButton);
-    await this.waits.waitForStableDom();
+    await this.loginButton.click();
   }
 
   /**
@@ -57,31 +57,27 @@ export class LoginPage extends BasePage {
    * Verify login was successful by checking for success message
    */
   async verifyLoginSuccess() {
-    await this.page.waitForSelector(this.successMessage, { timeout: 10000 });
-    const successText = await this.page.textContent(this.successMessage);
-    return successText?.includes('Logged In Successfully') || false;
+    return this.successMessage.filter({ hasText: 'Logged In Successfully' }).isVisible();
   }
 
   /**
    * Verify login failed by checking for error message
    */
   async verifyLoginError() {
-    const errorElement = await this.page.$(this.errorMessage);
-    return errorElement !== null;
+    return this.errorMessage.isVisible();
   }
 
   /**
    * Get the error message text
    */
   async getErrorMessage(): Promise<string | null> {
-    return await this.page.textContent(this.errorMessage);
+    return this.errorMessage.textContent();
   }
 
   /**
    * Verify page title contains 'login'
    */
   async verifyPageTitle() {
-    const title = await this.page.title();
-    return title.toLowerCase().includes('login');
+    return this.page.title().then((title) => title.toLowerCase().includes('login'));
   }
 }

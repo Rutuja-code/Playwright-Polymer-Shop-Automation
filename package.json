@@ -2,7 +2,7 @@
   "name": "playwright-polymer-shop",
   "version": "1.0.0",
   "private": true,
-  "description": "Enterprise-grade Playwright + TypeScript automation framework for the Polymer Shop demo website.",
+  "description": "Playwright + TypeScript automation framework for the Polymer Shop demo website.",
   "scripts": {
     "test": "playwright test",
     "test:smoke": "playwright test tests/smoke",
@@ -22,7 +22,7 @@
     "typescript",
     "automation",
     "sdet",
-    "portfolio"
+    "polymer-shop"
   ],
   "author": "Rutuja Raikar",
   "license": "ISC",

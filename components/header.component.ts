@@ -35,17 +35,7 @@ export class HeaderComponent {
     await this.categoryLinks.filter({ hasText: categoryName }).first().click();
   }
 
-  async openRandomCategory() {
-    const categoryNames = (await this.getCategoryNames())
-      .map((name) => name.trim())
-      .filter(Boolean);
-
-    if (categoryNames.length === 0) {
-      throw new Error('No categories were found in the header.');
-    }
-
-    const randomCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];
-    await this.openCategory(randomCategory);
-    return randomCategory;
+  async openConfiguredCategory(categoryName: string) {
+    await this.openCategory(categoryName);
   }
 }

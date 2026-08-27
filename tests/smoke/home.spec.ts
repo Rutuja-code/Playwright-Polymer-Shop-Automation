@@ -1,5 +1,4 @@
 import { test, expect } from '../../fixtures/base';
-import { ROUTES } from '../../constants/routes';
 
 test.describe('Smoke suite', () => {
   test('loads the home page and validates the main navigation', async ({
@@ -12,8 +11,8 @@ test.describe('Smoke suite', () => {
     await headerComponent.verifyVisible();
     await footerComponent.verifyVisible();
 
-    await expect(homePage.page).toHaveURL(new RegExp(ROUTES.home.replace('/', '')));
-    await expect(homePage.page).toHaveTitle(/SHOP/i);
+    await expect(homePage.page).toHaveURL(/\/$/);
+    await expect(homePage.page).toHaveTitle('Home - SHOP');
   });
 
   test('opens the mens outerwear category from the home page', async ({

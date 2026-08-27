@@ -30,15 +30,10 @@ export class CategoryPage extends BasePage {
     await this.productLinks.first().click();
   }
 
-  async selectRandomProduct() {
-    const count = await this.productLinks.count();
-    if (count === 0) {
-      throw new Error('No products were found in the current category.');
+  async openProduct(productRoute: string) {
+    if (!productRoute.startsWith('/detail/')) {
+      throw new Error(`Invalid product route: "${productRoute}". Expected a /detail/ route.`);
     }
-
-    const randomIndex = Math.floor(Math.random() * count);
-    await this.productLinks.nth(randomIndex).scrollIntoViewIfNeeded();
-    await this.productLinks.nth(randomIndex).click();
-    await this.waits.pauseForObservation();
+    await this.page.locator(`a[href="${productRoute}"]`).click();
   }
 }

@@ -1,23 +1,23 @@
 # Playwright Polymer Shop Automation Framework
 
-Enterprise-grade Playwright + TypeScript automation framework for the Polymer Shop demo site, designed for senior QA automation engineers and SDET interviews.
+Playwright + TypeScript automation framework for the Polymer Shop demo site.
 
 ![Framework Banner](assets/banner.svg)
 
-[![Playwright CI](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/playwright.yml/badge.svg)](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/playwright.yml)
-[![Security Checks](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/security.yml/badge.svg)](https://github.com/RutujaRaikar/Polymer-Shop_Playwright_Rutuja/actions/workflows/security.yml)
+[![Playwright CI](https://github.com/Rutuja-code/Playwright-Polymer-Shop-Automation/actions/workflows/playwright.yml/badge.svg)](https://github.com/Rutuja-code/Playwright-Polymer-Shop-Automation/actions/workflows/playwright.yml)
+[![Security Checks](https://github.com/Rutuja-code/Playwright-Polymer-Shop-Automation/actions/workflows/security.yml/badge.svg)](https://github.com/Rutuja-code/Playwright-Polymer-Shop-Automation/actions/workflows/security.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Last Commit](https://img.shields.io/github/last-commit/RutujaRaikar/Polymer-Shop_Playwright_Rutuja)
+![Last Commit](https://img.shields.io/github/last-commit/Rutuja-code/Playwright-Polymer-Shop-Automation)
 
 ## Why this framework exists
 
-This repository is a portfolio-grade automation framework built to demonstrate how a senior SDET or QA automation architect would structure a maintainable, scalable, and interview-worthy Playwright solution for a real product team. The goal is not just to automate a demo shop, but to show disciplined engineering: modular design, reusable abstractions, reliable test data, reporting, CI integration, and security-minded practices.
+This repository provides focused UI and HTTP checks for the Polymer Shop demo site, using page objects, shared fixtures, deterministic JSON test data, reporting, CI execution, and security checks.
 
 ## Professional GitHub presentation
 
-This repository is structured to feel like a production-ready engineering asset for recruiters, hiring managers, and technical reviewers. It includes:
+The repository includes:
 - a polished GitHub banner and badges
-- a professional README and architecture story
+- a concise README and architecture overview
 - contributor and review templates
 - release automation and dependency updates
 - security-focused CI workflows
@@ -26,10 +26,7 @@ This repository is structured to feel like a production-ready engineering asset 
 
 Maintainer: Rutuja Raikar
 
-This framework is designed to be professionally presented in GitHub, interviews, and enterprise-style technical reviews. For branding and protection:
-- use the MIT license for code reuse
-- add a trademark for product names or framework branding if you want commercial protection
-- retain copyright attribution in the repository files
+The framework targets the public Polymer Shop demo application. It does not implement authentication because that application does not expose a login workflow.
 
 ## Architecture overview
 
@@ -71,7 +68,7 @@ flowchart TD
 - Environment-based configuration using dotenv
 - Stronger assertions and reusable utilities for maintainable tests
 - Security-focused repository hygiene and CI checks
-- Designed for maintainability, reliability, and interview readiness
+- Deterministic product-flow and HTTP coverage
 
 ## Tech stack
 

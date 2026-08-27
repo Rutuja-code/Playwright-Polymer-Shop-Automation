@@ -3,7 +3,6 @@ import { BasePage } from './base.page';
 import { SELECTORS } from '../constants/selectors';
 
 import { ROUTES } from '../constants/routes';
-import { environment } from '../config/environment';
 
 export class CartPage extends BasePage {
   readonly cartBadge: Locator;
@@ -16,8 +15,7 @@ export class CartPage extends BasePage {
   }
 
   async open() {
-    await this.page.goto(`${environment.baseUrl}${ROUTES.cart}`);
-    await this.waits.waitForStableDom();
+    await super.open(ROUTES.cart);
   }
 
   async verifyLoaded() {
@@ -39,7 +37,6 @@ export class CartPage extends BasePage {
       return false;
     }
     await this.checkoutButton.first().click();
-    await this.waits.pauseForObservation();
     return true;
   }
 }
