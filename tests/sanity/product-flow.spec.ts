@@ -26,12 +26,15 @@ test.describe('Sanity suite', () => {
     await productPage.addToCart();
 
     await expect(cartPage.cartBadge).toBeVisible();
-    await expect(cartPage.cartBadge).toHaveText('2');
+    await expect.poll(() => cartPage.getCartItemCount()).toBe(2);
     await expect(homePage.page).toHaveURL(new RegExp(`${ROUTES.detail.replace('/', '')}`));
 
     await cartPage.open();
     await cartPage.verifyLoaded();
-    await cartPage.proceedToCheckoutIfSupported();
+    await cartPage.updateQuantity('3');
+    await expect(cartPage.quantitySelect).toHaveValue('3');
+    await cartPage.removeItem(selectedCategory.item.name);
+    await cartPage.verifyEmpty();
   });
 
   test('rejects an invalid product route', async ({ categoryPage }) => {

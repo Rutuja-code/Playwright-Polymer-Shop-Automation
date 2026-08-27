@@ -1,16 +1,18 @@
 import { Locator, Page } from '@playwright/test';
-import { SELECTORS } from '../constants/selectors';
 import { WaitUtils } from '../utils/waits';
 
 export class HeaderComponent {
   readonly logoLink: Locator;
   readonly cartLink: Locator;
   readonly categoryLinks: Locator;
+  readonly categoriesButton: Locator;
 
   constructor(private readonly page: Page) {
-    this.logoLink = page.locator('a[aria-label="SHOP Home"]');
-    this.cartLink = page.locator(SELECTORS.cartLink);
-    this.categoryLinks = page.locator(SELECTORS.categoryLinks);
+    const navigation = page.getByRole('navigation');
+    this.logoLink = navigation.getByRole('link', { name: 'SHOP Home' });
+    this.cartLink = navigation.getByRole('link', { name: /Shopping cart:/ });
+    this.categoryLinks = navigation.getByRole('link', { name: /Outerwear|T-Shirts/ });
+    this.categoriesButton = navigation.getByRole('button', { name: 'Categories' });
   }
 
   async verifyVisible() {
@@ -32,7 +34,7 @@ export class HeaderComponent {
   }
 
   async openCategory(categoryName: string) {
-    await this.categoryLinks.filter({ hasText: categoryName }).first().click();
+    await this.categoryLinks.filter({ hasText: categoryName }).click();
   }
 
   async openConfiguredCategory(categoryName: string) {

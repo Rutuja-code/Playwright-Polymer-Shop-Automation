@@ -1,8 +1,7 @@
 import path from 'path';
 import dotenv from 'dotenv';
 
-const envName = process.env.ENV_NAME ?? 'dev';
-const envFilePath = path.resolve(__dirname, '..', 'env', `.env.${envName}`);
+const envFilePath = path.resolve(__dirname, '..', 'env', '.env.dev');
 
 dotenv.config({ path: envFilePath });
 

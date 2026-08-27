@@ -8,9 +8,10 @@ export class CategoryPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.heading = page.locator('shop-app').locator('shop-list').locator('header > h1');
-    this.productLinks = page.locator('shop-app').locator('shop-list').locator('ul.grid > li > a');
-    this.productCount = page.locator('shop-app').locator('shop-list').locator('header > span');
+    const main = page.getByRole('main');
+    this.heading = main.getByRole('heading', { level: 1 });
+    this.productLinks = main.getByRole('list').getByRole('link');
+    this.productCount = main.getByText(/\(\d+ items?\)/);
   }
 
   async open(categoryRoute: string) {
@@ -34,6 +35,9 @@ export class CategoryPage extends BasePage {
     if (!productRoute.startsWith('/detail/')) {
       throw new Error(`Invalid product route: "${productRoute}". Expected a /detail/ route.`);
     }
-    await this.page.locator(`a[href="${productRoute}"]`).click();
+    await this.page
+      .getByRole('link')
+      .and(this.page.locator(`[href="${productRoute}"]`))
+      .click();
   }
 }

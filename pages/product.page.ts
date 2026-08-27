@@ -1,6 +1,5 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
-import { SELECTORS } from '../constants/selectors';
 
 export class ProductPage extends BasePage {
   readonly title: Locator;
@@ -11,11 +10,12 @@ export class ProductPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.title = page.locator(SELECTORS.productTitle).first();
-    this.price = page.locator('.price');
-    this.addToCartButton = page.locator(SELECTORS.addToCartButton);
-    this.sizeSelect = page.locator(SELECTORS.sizeSelect);
-    this.quantitySelect = page.locator(SELECTORS.quantitySelect);
+    const main = page.getByRole('main');
+    this.title = main.getByRole('heading', { level: 1 });
+    this.price = main.getByText(/^\$\d+\.\d{2}$/).first();
+    this.addToCartButton = main.getByRole('button', { name: 'Add this item to cart' });
+    this.sizeSelect = main.getByRole('combobox', { name: 'Size' });
+    this.quantitySelect = main.getByRole('combobox', { name: 'Quantity' });
   }
 
   async verifyLoaded() {
@@ -46,9 +46,7 @@ export class ProductPage extends BasePage {
   }
 
   async selectQuantity(quantity: string) {
-    if (await this.quantitySelect.count()) {
-      await this.quantitySelect.selectOption(quantity);
-    }
+    await this.quantitySelect.selectOption(quantity);
   }
 
   async addToCart() {

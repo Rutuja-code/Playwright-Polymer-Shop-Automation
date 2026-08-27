@@ -8,6 +8,5 @@ export const ROUTES = {
   },
   cart: '/cart',
   checkout: '/checkout',
-  login: '/login',
   detail: '/detail',
 } as const;

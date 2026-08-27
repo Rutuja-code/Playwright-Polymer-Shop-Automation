@@ -6,8 +6,8 @@ export class FooterComponent {
   readonly madeByLink: Locator;
 
   constructor(private readonly page: Page) {
-    this.footer = page.locator('footer');
-    this.madeByLink = page.locator('footer a');
+    this.footer = page.getByRole('contentinfo');
+    this.madeByLink = this.footer.getByRole('link', { name: 'Made by Polymer' });
   }
 
   async verifyVisible() {

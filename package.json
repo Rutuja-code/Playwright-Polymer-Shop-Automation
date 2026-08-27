@@ -8,8 +8,9 @@
     "test:smoke": "playwright test tests/smoke",
     "test:sanity": "playwright test tests/sanity",
     "test:regression": "playwright test tests/regression",
-    "test:api": "playwright test tests/api",
+    "test:http": "playwright test tests/http",
     "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --noEmit",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
     "test:headed": "playwright test --headed",
@@ -25,7 +26,7 @@
     "polymer-shop"
   ],
   "author": "Rutuja Raikar",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.1",

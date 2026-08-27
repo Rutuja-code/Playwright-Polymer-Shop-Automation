@@ -20,9 +20,6 @@ export default defineConfig({
   outputDir: 'reports/test-results',
   use: {
     baseURL: environment.baseUrl,
-    headless: true,
-    viewport: { width: 1440, height: 1200 },
-    ignoreHTTPSErrors: true,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

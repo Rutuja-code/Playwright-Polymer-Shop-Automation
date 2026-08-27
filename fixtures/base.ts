@@ -5,7 +5,6 @@ import { FooterComponent } from '../components/footer.component';
 import { CategoryPage } from '../pages/category.page';
 import { ProductPage } from '../pages/product.page';
 import { CartPage } from '../pages/cart.page';
-import { LoginPage } from '../pages/login.page';
 
 export type AppFixtures = {
   homePage: HomePage;
@@ -14,7 +13,6 @@ export type AppFixtures = {
   categoryPage: CategoryPage;
   productPage: ProductPage;
   cartPage: CartPage;
-  loginPage: LoginPage;
 };
 
 export const test = base.extend<AppFixtures>({
@@ -35,9 +33,6 @@ export const test = base.extend<AppFixtures>({
   },
   cartPage: async ({ page }, use) => {
     await use(new CartPage(page));
-  },
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page));
   },
 });
 

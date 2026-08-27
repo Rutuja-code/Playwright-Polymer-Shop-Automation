@@ -11,22 +11,9 @@ Playwright + TypeScript automation framework for the Polymer Shop demo site.
 
 ## Why this framework exists
 
-This repository provides focused UI and HTTP checks for the Polymer Shop demo site, using page objects, shared fixtures, deterministic JSON test data, reporting, CI execution, and security checks.
+This repository provides focused UI and HTTP page checks for the public Polymer Shop demo site, using page objects, shared fixtures, deterministic JSON test data, reporting, CI execution, and security checks. The application has no authentication or backend API, so the suite does not invent login or REST API tests.
 
-## Professional GitHub presentation
-
-The repository includes:
-- a polished GitHub banner and badges
-- a concise README and architecture overview
-- contributor and review templates
-- release automation and dependency updates
-- security-focused CI workflows
-
-## Ownership and branding
-
-Maintainer: Rutuja Raikar
-
-The framework targets the public Polymer Shop demo application. It does not implement authentication because that application does not expose a login workflow.
+Coverage includes the homepage, category navigation and listing, configured product detail, deterministic add-to-cart flow, quantity update, item removal, empty-cart state, mobile shell visibility, and successful HTML page responses. The public demo does not provide product search, authentication, or a JSON/REST API; those behaviors are intentionally outside this framework's scope.
 
 ## Architecture overview
 
@@ -35,7 +22,7 @@ tests/                -> smoke / sanity / regression suites
 pages/                -> page objects for each application page
 components/           -> reusable UI components
 fixtures/             -> custom Playwright fixtures
-helpers/              -> logger, retry-aware utilities
+helpers/              -> HTTP client and logging utilities
 utils/                -> assertions, waits, screenshots, state capture
 constants/            -> routes, selectors, and shared values
 data/                 -> JSON-driven test data
@@ -65,8 +52,8 @@ flowchart TD
 - Reusable fixtures and abstraction layers
 - Cross-browser and mobile execution
 - HTML, Allure, screenshot, video, and trace reporting on failure
-- Environment-based configuration using dotenv
-- Stronger assertions and reusable utilities for maintainable tests
+- Single-target environment configuration using dotenv
+- Web-first assertions and reusable utilities for maintainable tests
 - Security-focused repository hygiene and CI checks
 - Deterministic product-flow and HTTP coverage
 
@@ -87,7 +74,7 @@ flowchart TD
 - fixtures/: test fixture wiring for application objects
 - utils/: reusable helpers for waits, assertions, screenshots, and context capture
 - constants/: centralized routes and selectors
-- data/: JSON-driven test data for products and users
+- data/: JSON-driven product test data
 - config/: environment management
 - reports/: outputs for execution artifacts and reporting
 
@@ -105,6 +92,7 @@ npm test
 npm run test:smoke
 npm run test:sanity
 npm run test:regression
+npm run test:http
 npm run test:headed
 npm run test:debug
 ```
@@ -128,7 +116,7 @@ npm run allure:report
 ## CI/CD
 
 The repository includes:
-- a Playwright workflow for automated execution on push and pull request
+- a Playwright workflow for lint, typecheck, and automated execution on push and pull request
 - a security workflow for dependency auditing and secret scanning
 - artifact upload for HTML reports, test results, and Allure output
 
